@@ -52,7 +52,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
             >
-              <a className="btn" href="/src/assets/Ayush_Girulkar_Resume.pdf" download>
+              <a className="btn" href="/assets/Ayush_Girulkar_Resume.pdf" download>
                 Download Resume
               </a>
               <a className="btn btn-outline" href="#projects">
