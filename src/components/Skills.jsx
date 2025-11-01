@@ -1,58 +1,71 @@
-import React from "react";
-import { motion } from "framer-motion";
+// Skills.jsx
+import React, { useEffect, useRef } from "react";
 import "../styles.css";
 
 const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "JAVA",
-  "Git",
-  "Spring Boot",
-  "Figma",
-  "SQL",
-  "C",
-  "C++",
-  "Python",
+  "HTML","CSS","JavaScript","React","JAVA","Git","Spring Boot","Figma","SQL","C","C++","Python",
 ];
 
 export default function Skills() {
+  const containerRef = useRef(null);
+  const innerRef = useRef(null);
+  const copyCount = 3;
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const inner = innerRef.current;
+    if (!container || !inner) return;
+
+    const setInitial = () => {
+      const totalWidth = inner.scrollWidth;
+      const singleSetWidth = totalWidth / copyCount;
+      container.scrollLeft = singleSetWidth;
+    };
+
+    setInitial();
+    const onResize = () => setInitial();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const onScroll = () => {
+    const container = containerRef.current;
+    const inner = innerRef.current;
+    if (!container || !inner) return;
+
+    const totalWidth = inner.scrollWidth;
+    const singleSetWidth = totalWidth / copyCount;
+    const maxScroll = singleSetWidth * 2;
+    const cur = container.scrollLeft;
+    const tolerance = 2;
+
+    if (cur <= tolerance) {
+      container.scrollLeft = cur + singleSetWidth;
+    } else if (cur >= maxScroll - tolerance) {
+      container.scrollLeft = cur - singleSetWidth;
+    }
+  };
+
+  const items = Array.from({ length: copyCount }).flatMap(() =>
+    skills.map((s) => s)
+  );
+
   return (
     <section id="skills" className="section">
-      <motion.h2
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        Skills <span style={{ color: "#9aa7b2" }}>•</span>
-      </motion.h2>
+      <h2>Skills <span style={{ color: "#9aa7b2" }}>•</span></h2>
 
-      <div className="skills-wrapper">
-        {/* Looping scroll animation */}
-        <motion.div
-          className="skills-scroll"
-          animate={{
-            x: ["0%", "-100%"],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 15,
-            ease: "linear",
-          }}
-        >
-          {[...skills, ...skills].map((s, i) => (
-            <motion.div
-              key={i}
-              className="skill-pill"
-              whileHover={{ scale: 1.1, backgroundColor: "#1f2937" }}
-              transition={{ type: "spring", stiffness: 200 }}
-            >
+      <div
+        className="skills-wrapper manual-scroll"
+        ref={containerRef}
+        onScroll={onScroll}
+      >
+        <div className="skills-scroll manual-inner" ref={innerRef}>
+          {items.map((s, i) => (
+            <div className="skill-pill" key={i}>
               {s}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
