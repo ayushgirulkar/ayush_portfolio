@@ -43,7 +43,7 @@ export default function App() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              I'm a passionate full-stack developer with hands-on experience in building web applications using Java, Spring Boot, React, and modern database technologies. I enjoy developing complete end-to-end solutions — from backend APIs to responsive frontends. I love exploring new technologies, solving real-world problems, and continuously improving my coding skills through practical projects.
+              I'm a passionate full-stack developer with <br></>hands-on experience in building web applications using Java, Spring Boot, React, and modern database technologies. I enjoy developing complete end-to-end solutions — from backend APIs to responsive frontends. I love exploring new technologies, solving real-world problems, and continuously improving my coding skills through practical projects.
             </motion.p>
 
             <motion.div
