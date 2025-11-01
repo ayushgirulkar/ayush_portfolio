@@ -104,30 +104,49 @@ h1{font-size:34px;margin:0}
 .edu-item:hover {
   box-shadow: 0 6px 20px rgba(124, 92, 255, 0.15);
 }
-
-/* Skills */
+/* skill */
 .skills-wrapper {
   overflow: hidden;
   width: 100%;
   margin-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0;
   position: relative;
 }
 
 .skills-scroll {
   display: flex;
-  gap: 18px;
-  white-space: nowrap;
-  will-change: transform;
+  flex-wrap: nowrap; /* ✅ Prevents line break */
+  gap: 16px;
+  will-change: transform; /* ✅ GPU-accelerated smooth scroll */
 }
 
 .skill-pill {
-  display: inline-block;
-  padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 25px;
-  color: #fff;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.3s ease;
+  flex: 0 0 auto; /* ✅ Each pill stays fixed-width horizontally */
+  padding: 10px 20px;
+  background: var(--card, #0b0f14);
+  border-radius: 50px;
+  font-size: 15px;
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  white-space: nowrap; /* ✅ Keeps text in one line */
+  cursor: default;
+}
+.manual-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
+  touch-action: pan-x; /* allow horizontal pan */
+}
+
+/* Hover effect (for desktop only) */
+.skill-pill:hover {
+  transform: scale(1.05);
 }
 
 /* Projects */
@@ -165,32 +184,50 @@ h1{font-size:34px;margin:0}
 }
 
 
-/* Certificates Section */
+/* ===========================
+   Certificates Section
+=========================== */
 .certs-scroll {
   overflow: hidden;
   width: 100%;
   margin-top: 16px;
   position: relative;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 16px 0;
+}
+.manual-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
+  touch-action: pan-x; /* allow horizontal pan */
 }
 
 .scroll-inner {
   display: flex;
+  flex-wrap: nowrap;        /* ✅ Prevent wrapping on mobile */
   gap: 24px;
+  will-change: transform;   /* ✅ Improves smoothness for Framer Motion */
 }
 
+/* Each certificate card */
 .cert-card {
+  flex: 0 0 auto;           /* ✅ Ensures horizontal scroll behavior */
   width: 160px;
   height: 140px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  flex-shrink: 0;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  background: var(--card, #111);
+}
+
+.cert-card:hover {
+  transform: scale(1.05);
 }
 
 .cert-card img {
@@ -198,13 +235,14 @@ h1{font-size:34px;margin:0}
   height: 100%;
   object-fit: cover;
   filter: brightness(0.9);
-  transition: filter 0.3s;
+  transition: filter 0.3s ease;
 }
 
 .cert-card:hover img {
   filter: brightness(1);
 }
 
+/* Overlay text */
 .cert-info {
   position: absolute;
   bottom: 0;
@@ -214,9 +252,12 @@ h1{font-size:34px;margin:0}
   color: white;
   padding: 6px 8px;
   font-size: 13px;
+  text-align: center;
 }
 
-/* Modal styling */
+/* ===========================
+   Modal Styling
+=========================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -235,6 +276,7 @@ h1{font-size:34px;margin:0}
   max-width: 480px;
   width: 90%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .modal img {
@@ -246,7 +288,7 @@ h1{font-size:34px;margin:0}
 .modal-actions {
   margin-top: 16px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -308,38 +350,63 @@ h1{font-size:34px;margin:0}
 /* 🌐 Small Responsive Design */
 @media (max-width: 880px) {
 
-  /* Layout adjustments */
-  .about-grid,
-  .contact-grid,
-  .projects-grid,
-  .edu-list,
-  .experience-list {
-    grid-template-columns: 1fr !important;
-    display: grid;
+  /* Global layout adjustments */
+  body {
+    padding: 0 10px;
+    font-size: 15px;
   }
 
-  /* Navbar & hero */
+  .site {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 16px;
+  }
+
+  .section {
+    margin: 20px 0;
+    padding: 24px;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  .section h2 {
+    font-size: 22px;
+    gap: 8px;
+  }
+
+  /* Navbar */
   .nav {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
   }
 
+  .nav a {
+    font-size: 15px;
+    padding: 6px 10px;
+  }
+
+  /* Hero section */
   .hero-inner {
     text-align: center;
     max-width: 100%;
   }
 
   .hero h1 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .lead {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
   }
 
   /* About section */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .profile {
     flex-direction: column;
     align-items: center;
@@ -347,50 +414,123 @@ h1{font-size:34px;margin:0}
   }
 
   .profile img {
+    width: 120px;
+    height: 120px;
     margin-bottom: 10px;
   }
 
-  /* Skills */
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 8px;
-  }
-
-  /* Experience cards */
-  .exp-card {
-    padding: 12px;
-  }
-
-  /* Projects */
-  .projects-grid {
+  /* Education, Experience, Skills grid cards */
+  .edu-list,
+  .experience-list {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
 
-  .project-media video,
-  .project-media img {
-    height: auto;
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .skill-card {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* ===============================
+     Skills Scroll (Loop Animation)
+  =============================== */
+  .skills-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .skills-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  .manual-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
+  touch-action: pan-x; /* allow horizontal pan */
+}
+
+  .skill-pill {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 50px;
+    background: var(--card, #0b0f14);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e0e0e0;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
 
   /* Certificates scroll section */
   .certs-scroll {
     overflow: hidden;
+    padding: 10px 0;
   }
+  .manual-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
+  touch-action: pan-x; /* allow horizontal pan */
+}
 
   .scroll-inner {
     display: flex;
-    gap: 10px;
+    gap: 16px;
   }
 
-  /* Buttons and text */
-  .btn, .btn-outline {
-    padding: 8px 12px;
+  .cert-card {
+    min-width: 220px;
+    height: auto;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .cert-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .cert-info h4 {
     font-size: 14px;
+  }
+
+  /* Contact section */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
   }
 
   /* Footer */
   footer {
     text-align: center;
-    padding: 16px 0;
+    font-size: 14px;
+    padding: 20px 0;
   }
 }
