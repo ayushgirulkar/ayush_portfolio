@@ -465,7 +465,7 @@ h1{font-size:34px;margin:0}
   .skill-pill {
     flex: 0 0 auto;
     padding: 8px 14px;
-    font-size: 14px;
+    font-size: 18.5px;
     border-radius: 50px;
     background: var(--card, #0b0f14);
     border: 1px solid rgba(255, 255, 255, 0.08);
