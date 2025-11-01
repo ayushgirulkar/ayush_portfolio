@@ -66,7 +66,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                <a className="icon-btn" href="/src/assets/Ayush_Girulkar_Resume.pdf" download>
+                <a className="icon-btn" href="/assets/Ayush_Girulkar_Resume.pdf" download>
                   Resume
                 </a>
                 <a className="icon-btn" href="#projects">
@@ -132,3 +132,4 @@ export default function About() {
     </section>
   );
 }
+
