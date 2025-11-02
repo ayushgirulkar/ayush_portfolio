@@ -104,51 +104,43 @@ h1{font-size:34px;margin:0}
 .edu-item:hover {
   box-shadow: 0 6px 20px rgba(124, 92, 255, 0.15);
 }
-/* skill */
-.skills-wrapper {
-  overflow: hidden;
-  width: 100%;
-  margin-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px 0;
-  position: relative;
+/* Skills Section — Grid Box Layout */
+.skills-grid-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 24px;
 }
 
-.skills-scroll {
-  display: flex;
-  flex-wrap: nowrap; /* ✅ Prevents line break */
-  gap: 16px;
-  will-change: transform; /* ✅ GPU-accelerated smooth scroll */
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 20px 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.skill-pill {
-  flex: 0 0 auto; /* ✅ Each pill stays fixed-width horizontally */
-  padding: 10px 20px;
-  background: var(--card, #0b0f14);
-  border-radius: 50px;
+.skill-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-icon-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
   font-size: 15px;
-  color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  white-space: nowrap; /* ✅ Keeps text in one line */
-  cursor: default;
+  color: #e3e3e3;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
-.manual-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
-  scrollbar-width: none; /* firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
-  touch-action: pan-x; /* allow horizontal pan */
-}
-
-/* Hover effect (for desktop only) */
-.skill-pill:hover {
-  transform: scale(1.05);
-}
-
 /* Projects */
 .projects-grid {
   display: grid;
@@ -187,74 +179,47 @@ h1{font-size:34px;margin:0}
 /* ===========================
    Certificates Section
 =========================== */
-.certs-scroll {
-  overflow: hidden;
-  width: 100%;
-  margin-top: 16px;
-  position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px 0;
-}
-.manual-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
-  scrollbar-width: none; /* firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
-  touch-action: pan-x; /* allow horizontal pan */
+/* ===== ACHIEVEMENTS GRID ===== */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
 }
 
-.scroll-inner {
-  display: flex;
-  flex-wrap: nowrap;        /* ✅ Prevent wrapping on mobile */
-  gap: 24px;
-  will-change: transform;   /* ✅ Improves smoothness for Framer Motion */
-}
-
-/* Each certificate card */
-.cert-card {
-  flex: 0 0 auto;           /* ✅ Ensures horizontal scroll behavior */
-  width: 160px;
-  height: 140px;
+.achievement-card {
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-  background: var(--card, #111);
-}
-
-.cert-card:hover {
-  transform: scale(1.05);
-}
-
-.cert-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.9);
-  transition: filter 0.3s ease;
-}
-
-.cert-card:hover img {
-  filter: brightness(1);
-}
-
-/* Overlay text */
-.cert-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
-  color: white;
-  padding: 6px 8px;
-  font-size: 13px;
   text-align: center;
+  padding: 16px 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  max-width: 180px;
+  margin: auto;
 }
 
+.achievement-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.achievement-img {
+  width: 100%;
+  height: 110px; /* ✅ Increased image height */
+  object-fit: contain;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.achievement-card p {
+  font-size: 14px;
+  color: #e3e3e3;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
 /* ===========================
    Modal Styling
 =========================== */
@@ -426,89 +391,6 @@ h1{font-size:34px;margin:0}
     gap: 16px;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-  }
-
-  .skill-card {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  /* ===============================
-     Skills Scroll (Loop Animation)
-  =============================== */
-  .skills-wrapper {
-    overflow: hidden;
-    width: 100%;
-    padding: 12px 0;
-    margin-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .skills-scroll {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 12px;
-  }
-  .manual-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
-  scrollbar-width: none; /* firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
-  touch-action: pan-x; /* allow horizontal pan */
-}
-
-  .skill-pill {
-    flex: 0 0 auto;
-    padding: 8px 14px;
-    font-size: 18.5px;
-    border-radius: 50px;
-    background: var(--card, #0b0f14);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #e0e0e0;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  }
-
-  /* Certificates scroll section */
-  .certs-scroll {
-    overflow: hidden;
-    padding: 10px 0;
-  }
-  .manual-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth inertia on iOS */
-  scrollbar-width: none; /* firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  scroll-behavior: auto; /* we want instant jumps when we programmatically adjust scrollLeft */
-  touch-action: pan-x; /* allow horizontal pan */
-}
-
-  .scroll-inner {
-    display: flex;
-    gap: 16px;
-  }
-
-  .cert-card {
-    min-width: 220px;
-    height: auto;
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
-
-  .cert-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  .cert-info h4 {
-    font-size: 14px;
-  }
 
   /* Contact section */
   .contact-grid {
@@ -533,4 +415,103 @@ h1{font-size:34px;margin:0}
     font-size: 14px;
     padding: 20px 0;
   }
+
+  /*only skill section  */
+  /* ✅ Responsive: Compact layout on tablets */
+@media (max-width: 1024px) {
+  .skills-grid-box {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 18px;
+  }
+}
+
+/* ✅ Responsive: 3–4 skills per row on mobile */
+@media (max-width: 768px) {
+  .skills-grid-box {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+  }
+
+  .skill-card {
+    padding: 10px 5px;
+    border-radius: 10px;
+  }
+
+  .skill-icon-img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .skill-card p {
+    font-size: 13px;
+  }
+}
+
+/* ✅ Extra small phones */
+@media (max-width: 480px) {
+  .skills-grid-box {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 10px;
+  }
+
+  .skill-card {
+    padding: 8px 4px;
+  }
+
+  .skill-icon-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .skill-card p {
+    font-size: 12px;
+  }
+}
+/*only achivement section */
+
+/* ✅ Responsive */
+@media (max-width: 1024px) {
+  .achievements-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .achievement-img {
+    height: 95px;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievements-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+  }
+
+  .achievement-card {
+    padding: 12px 6px;
+  }
+
+  .achievement-img {
+    height: 80px;
+  }
+
+  .achievement-card p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 10px;
+  }
+
+  .achievement-img {
+    height: 70px;
+  }
+
+  .achievement-card p {
+    font-size: 11px;
+  }
+}
 }
