@@ -1,71 +1,48 @@
-// Skills.jsx
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import "../styles.css";
 
 const skills = [
-  "HTML","CSS","JavaScript","React","JAVA","Git","Spring Boot","Figma","SQL","C","C++","Python",
+  { name: "JAVA", icon: "/assets/j.png" },
+  { name: "C", icon: "/assets/c.png" },
+  { name: "C++", icon: "/assets/cppp.png" },
+  { name: "Python", icon: "/assets/p.png" },
+  { name: "Springboot", icon: "/assets/s.png" },
+  { name: "React", icon: "/assets/r.png" },
+  { name: "SQL", icon: "/assets/sq.png" },
+  { name: "JavaScript", icon: "/assets/js.png" },
+  { name: "HTML", icon: "/assets/h.png" },
+  { name: "CSS", icon: "/assets/css.png" },
+  { name: "Figma", icon: "/assets/f.png" },
+  { name: "Git", icon: "/assets/git.png" },
+  { name: "PostMan", icon: "/assets/postman.png" },
 ];
 
 export default function Skills() {
-  const containerRef = useRef(null);
-  const innerRef = useRef(null);
-  const copyCount = 3;
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const inner = innerRef.current;
-    if (!container || !inner) return;
-
-    const setInitial = () => {
-      const totalWidth = inner.scrollWidth;
-      const singleSetWidth = totalWidth / copyCount;
-      container.scrollLeft = singleSetWidth;
-    };
-
-    setInitial();
-    const onResize = () => setInitial();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  const onScroll = () => {
-    const container = containerRef.current;
-    const inner = innerRef.current;
-    if (!container || !inner) return;
-
-    const totalWidth = inner.scrollWidth;
-    const singleSetWidth = totalWidth / copyCount;
-    const maxScroll = singleSetWidth * 2;
-    const cur = container.scrollLeft;
-    const tolerance = 2;
-
-    if (cur <= tolerance) {
-      container.scrollLeft = cur + singleSetWidth;
-    } else if (cur >= maxScroll - tolerance) {
-      container.scrollLeft = cur - singleSetWidth;
-    }
-  };
-
-  const items = Array.from({ length: copyCount }).flatMap(() =>
-    skills.map((s) => s)
-  );
-
   return (
     <section id="skills" className="section">
-      <h2>Skills <span style={{ color: "#9aa7b2" }}>•</span></h2>
+      <h2>
+        Skills <span style={{ color: "#9aa7b2" }}>•</span>
+      </h2>
 
-      <div
-        className="skills-wrapper manual-scroll"
-        ref={containerRef}
-        onScroll={onScroll}
-      >
-        <div className="skills-scroll manual-inner" ref={innerRef}>
-          {items.map((s, i) => (
-            <div className="skill-pill" key={i}>
-              {s}
-            </div>
-          ))}
-        </div>
+      <div className="skills-grid-box">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="skill-card"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: index * 0.05,
+              ease: "easeOut",
+            }}
+            viewport={{ once: true }}
+          >
+            <img src={skill.icon} alt={skill.name} className="skill-icon-img" />
+            <p>{skill.name}</p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
