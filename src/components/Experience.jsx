@@ -7,7 +7,7 @@ export default function Experience() {
     {
       company: 'Skolliq',
       role: 'Software Developer Intern',
-      duration: 'Aug 2025 - Sep 2025',
+      duration: 'Aug 2025 - Oct 2025',
       description:
         'During my internship, I worked on building the backend and database for a school event management system. I created database tables and APIs to manage various events, including sports and cultural activities. Additionally, I contributed to designing the event section interface using Figma, ensuring a user-friendly and visually appealing layout.',
     }
@@ -97,3 +97,4 @@ export default function Experience() {
     </section>
   );
 }
+
