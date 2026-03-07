@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ayushPhoto from '/assets/ayush.jpg'; // Correct asset import path
+import ayushPhoto from '/assets/ayush_photo.jpeg'; // Correct asset import path
 
 export default function About() {
   return (
@@ -137,3 +137,4 @@ export default function About() {
     </section>
   );
 }
+
