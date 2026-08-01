@@ -125,7 +125,7 @@ export default function About() {
             >
               <a
                 className="icon-btn"
-                href="https://github.com/"
+                href="https://github.com/ayushgirulkar"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -133,7 +133,7 @@ export default function About() {
               </a>
               <a
                 className="icon-btn"
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/ayush-girulkar-bb3161219/"
                 target="_blank"
                 rel="noreferrer"
               >

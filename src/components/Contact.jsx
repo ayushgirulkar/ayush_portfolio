@@ -50,7 +50,7 @@ export default function Contact() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 }}>
               <a href="https://www.instagram.com/ayush_girulkar/" target="_blank" rel="noreferrer" className="icon-btn">Instagram</a>
               <a href="https://www.linkedin.com/in/ayush-girulkar-bb3161219/" target="_blank" rel="noreferrer" className="icon-btn">LinkedIn</a>
-              <a href="https://github.com/ayushgirulkar?tab=repositories" target="_blank" rel="noreferrer" className="icon-btn">GitHub</a>
+              <a href="https://github.com/ayushgirulkar" target="_blank" rel="noreferrer" className="icon-btn">GitHub</a>
             </div>
 
             <div style={{ marginTop: 12, color: '#9aa7b2' }}>
