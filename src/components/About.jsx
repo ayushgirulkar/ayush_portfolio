@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ayushPhoto from '/assets/ayush_photo.jpeg'; // Correct asset import path
+import ayushPhoto from '/assets/ayush_photo.jpg'; // Correct asset import path
 
 export default function About() {
   return (
@@ -104,8 +104,17 @@ export default function About() {
           <div className="card">
             <h4 style={{ margin: '0 0 8px 0' }}>Contact</h4>
             <p style={{ margin: 0, color: '#9aa7b2' }}>
-              Email: <a href="mailto:girulkarayush@gmail.com">girulkarayush@gmail.com</a>
-            </p>
+    Email:{' '}
+    <a
+      href="mailto:girulkarayush@gmail.com"
+      style={{
+        color: 'red',
+        textDecoration: 'none'
+      }}
+    >
+      girulkarayush@gmail.com
+    </a>
+  </p>
             <p style={{ marginTop: 6, color: '#9aa7b2' }}>Location: Amravati, Maharashtra, India</p>
 
             <motion.div

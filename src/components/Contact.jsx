@@ -23,9 +23,10 @@ export default function Contact() {
         setForm({ name: '', email: '', message: '' })
       })
       .catch((error) => {
-        console.error('EmailJS error:', error)
-        setStatus('Failed to send ❌ Please try again.')
-      })
+  console.log("Error:", error);
+  alert(JSON.stringify(error));
+  setStatus("Failed to send ❌");
+});
   }
 
   return (
@@ -53,7 +54,18 @@ export default function Contact() {
             </div>
 
             <div style={{ marginTop: 12, color: '#9aa7b2' }}>
-              <div>Prefer direct email? <a href="mailto:girulkarayush@gmail.com">girulkarayush@gmail.com</a></div>
+              <div>
+  Prefer direct email?{" "}
+  <a
+    href="mailto:girulkarayush@gmail.com"
+    style={{
+      color: "#e63946",
+      textDecoration: "none",
+    }}
+  >
+    girulkarayush@gmail.com
+  </a>
+</div>
             </div>
           </div>
         </aside>

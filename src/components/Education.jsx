@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const education = [
   { level: "10th (SSC)", school: "Manibai Gujrati High School, Amravati", year: "2021", grade: "97.60%" },
   { level: "Diploma", school: "Government Polytechnic Amravati", year: "2024", grade: "84.16%" },
-  { level: "B.E CSE (In progress)", school: "Sipna College Of Engineering And Technology", year: "2027", grade: "8.6 CGPA" },
+  { level: "B.E CSE (In progress)", school: "Sipna College Of Engineering And Technology", year: "2027", grade: "8.0 CGPA" },
 ];
 
 export default function Education() {

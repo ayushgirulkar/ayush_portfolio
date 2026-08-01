@@ -9,6 +9,7 @@ const certs = [
   { title: "AI Tools", thumb: "/assets/tool.png", url: "https://certx.in/certificate/0270772f-3809-4400-b29b-1e1c61cd0997431329" },
   { title: "Devthon Competition", thumb: "/assets/devthon.png", url: "https://www.linkedin.com/in/ayush-girulkar-bb3161219/recent-activity/all/" },
   { title: "Techno-Vision Competition", thumb: "/assets/techno.png", url: "https://www.linkedin.com/in/ayush-girulkar-bb3161219/recent-activity/all/" },
+  {title: "Problem Solving", thumb: "/assets/problemsolv.png", url: "https://www.hackerrank.com/certificates/iframe/1bd7ae604359" },
 ];
 
 export default function Achievements() {
