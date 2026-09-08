@@ -54,7 +54,7 @@ export default function App() {
             >
               <a
                   className="btn"
-                  href="/assets/Ayush_Girulkar_2_Resume.pdf"
+                  href="/assets/Ayush_Girulkar_logituit.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

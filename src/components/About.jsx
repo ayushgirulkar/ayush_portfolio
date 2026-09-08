@@ -68,7 +68,7 @@ export default function About() {
               >
                 <a
                   className="icon-btn"
-                  href="/assets/Ayush_Girulkar_2_Resume.pdf"
+                  href="/assets/Ayush_Girulkar_logituite.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
